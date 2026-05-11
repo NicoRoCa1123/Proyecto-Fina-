@@ -22,3 +22,29 @@ Proteger y restaurar los ecosistemas naturales (bosques y océanos).
 Adoptar patrones de consumo más sostenibles.
 
 Cumplir con acuerdos internacionales como el de París para limitar el calentamiento a 1,5 °C.
+
+# 🌍 ¿Cuánto CO₂ cuesta tu vida digital?
+
+## La idea de mi proyecto:
+> Una web interactiva donde el usuario ingresa actividades digitales cotidianas 
+> (ver Netflix, hacer una búsqueda, enviar emails) y recibe su huella de carbono 
+> digital expresada en equivalentes concretos y comprensibles — no en gramos 
+> abstractos, sino en kilómetros manejados, árboles necesarios o tiempo de aparatos encendidos.
+
+## Tipo de proyecto:
+> Página web (Flask + HTML/CSS + Python)
+
+## Bibliotecas que voy a utilizar:
+- `flask` — servidor web y rutas
+- `jinja2` — plantillas dinámicas (incluida con Flask)
+- `requests` — por si consumo alguna API externa de emisiones
+
+## Referencias útiles:
+- [The Carbon Cost of the Internet – The Shift Project](https://theshiftproject.org/en/article/unsustainable-use-online-video/)
+- [Website Carbon Calculator (inspiración de UI)](https://www.websitecarbon.com/)
+- [Dataset de emisiones digitales por actividad](https://www.iea.org/reports/digitalization-and-energy)
+
+## Artículos guía que usaré durante el desarrollo:
+Cómo pasar datos del formulario al backend con Flask... [Documentación oficial Flask](https://flask.palletsprojects.com/en/3.0.x/quickstart/#the-request-object)
+
+Cómo estructurar lógica de cálculo separada de las rutas... [Real Python – Flask Best Practices](https://realpython.com/flask-best-practices/)
