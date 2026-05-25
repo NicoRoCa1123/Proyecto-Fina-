@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HuellaDigital — ¿Cuánto CO₂ cuesta tu día?</title>
+  <link rel="stylesheet" href="../static/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <canvas id="particles"></canvas>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">🌍</span>
+      <span class="logo-text">HuellaDigital</span>
+    </div>
+    <nav class="nav">
+      <a href="#calculadora">Calcular</a>
+      <a href="#datos">El problema</a>
+      <a href="#tips">Qué hacer</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-label">Hackathon · Cambio climático</div>
+    <h1 class="hero-title">
+      ¿Cuánto CO₂<br/>
+      <span class="highlight">cuesta tu día</span><br/>
+      digital?
+    </h1>
+    <p class="hero-sub">
+      Cada búsqueda, video y email que mandas tiene un costo invisible para el planeta.<br/>
+      Descúbrelo — y cambia algo hoy.
+    </p>
+    <a href="#calculadora" class="btn-primary">
+      <span>Calcular mi huella</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+    <div class="floating-cards">
+      <div class="fcard fcard-1">
+        <div class="fcard-val">100g</div>
+        <div class="fcard-lbl">CO₂ por hora de Netflix HD</div>
+      </div>
+      <div class="fcard fcard-2">
+        <div class="fcard-val">4%</div>
+        <div class="fcard-lbl">emisiones globales del sector digital</div>
+      </div>
+      <div class="fcard fcard-3">
+        <div class="fcard-val">0.2g</div>
+        <div class="fcard-lbl">CO₂ por cada búsqueda en Google</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-problema" id="datos">
+    <div class="section-inner">
+      <div class="tag">El problema</div>
+      <h2>Lo digital también contamina</h2>
+      <p class="section-sub">
+        Internet consume más electricidad que países enteros. Los servidores, cables,
+        pantallas y antenas que hacen posible tu vida digital emiten CO₂ las 24 horas.
+      </p>
+      <div class="comparisons">
+        <div class="comp-card">
+          <div class="comp-icon">✈️</div>
+          <div class="comp-text">
+            <strong>El sector digital emite más CO₂ que toda la aviación mundial.</strong>
+            Y crece 6% cada año.
+          </div>
+        </div>
+        <div class="comp-card">
+          <div class="comp-icon">📺</div>
+          <div class="comp-text">
+            <strong>Ver 10 horas de video en streaming</strong> = dejar un carro encendido 1 hora.
+          </div>
+        </div>
+        <div class="comp-card">
+          <div class="comp-icon">📧</div>
+          <div class="comp-text">
+            <strong>Un email con adjunto pesado</strong> = una bombilla encendida durante 25 minutos.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-calc" id="calculadora">
+    <div class="section-inner">
+      <div class="tag tag-green">Calculadora</div>
+      <h2>¿Cuál fue tu huella hoy?</h2>
+      <p class="section-sub">Ajusta los deslizadores según tus actividades de hoy.</p>
+
+      <form class="calc-form" action="/calcular" method="POST">
+
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>📺 Horas de streaming (Netflix, YouTube)</span>
+            <span class="slider-val" id="val-streaming">1 h</span>
+          </div>
+          <input type="range" name="streaming" id="streaming" min="0" max="8" value="1" step="1" />
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>🔍 Búsquedas en Google</span>
+            <span class="slider-val" id="val-busquedas">10</span>
+          </div>
+          <input type="range" name="busquedas" id="busquedas" min="0" max="100" value="10" step="5" />
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>📧 Emails enviados</span>
+            <span class="slider-val" id="val-emails">5</span>
+          </div>
+          <input type="range" name="emails" id="emails" min="0" max="50" value="5" step="1" />
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>📱 Horas en redes sociales</span>
+            <span class="slider-val" id="val-redes">1 h</span>
+          </div>
+          <input type="range" name="redes" id="redes" min="0" max="6" value="1" step="1" />
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>💻 Videollamadas (Zoom, Meet)</span>
+            <span class="slider-val" id="val-video">0 h</span>
+          </div>
+          <input type="range" name="video" id="video" min="0" max="8" value="0" step="1" />
+        </div>
+
+        <div class="preview-box">
+          <div class="preview-co2">
+            <span class="preview-num" id="preview-num">136</span>
+            <span class="preview-unit">g CO₂</span>
+          </div>
+          <div class="preview-eq" id="preview-eq">≈ 1.4 km en carro</div>
+        </div>
+
+        <button type="submit" class="btn-primary btn-full">
+          <span>Ver mi resultado completo</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section-tips" id="tips">
+    <div class="section-inner">
+      <div class="tag">Qué puedes hacer</div>
+      <h2>Pequeños cambios, gran impacto</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">🎵</div>
+          <h3>Escucha música en lugar de verla</h3>
+          <p>El audio consume hasta 20 veces menos energía que el video en streaming.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🌙</div>
+          <h3>Usa modo oscuro</h3>
+          <p>En pantallas OLED reduce el consumo energético hasta un 60%.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📎</div>
+          <h3>Limpia tu bandeja de entrada</h3>
+          <p>Cada email almacenado en servidores emite CO₂. Borra lo que no necesitas.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📴</div>
+          <h3>Apaga la cámara en videollamadas</h3>
+          <p>Solo desactivar la cámara reduce el CO₂ de la llamada hasta en un 96%.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Hecho con 💚 para el hackathon · Datos: The Shift Project & Website Carbon Calculator</p>
+  </footer>
+
+  <script src="../static/css/main.js"></script>
+</body>
+</html>
