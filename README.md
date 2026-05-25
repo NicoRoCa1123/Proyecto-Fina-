@@ -17,7 +17,7 @@ Transicionar a energías renovables (solar, eólica).
 
 Mejorar la eficiencia energética.
 
-Proteger y restaurar los ecosistemas naturales (bosques y océanos).
+Proteger y restaurar los ecosistemas naturales.
 
 Adoptar patrones de consumo más sostenibles.
 
@@ -32,11 +32,11 @@ Cumplir con acuerdos internacionales como el de París para limitar el calentami
 > abstractos, sino en kilómetros manejados, árboles necesarios o tiempo de aparatos encendidos.
 
 ## Tipo de proyecto:
-> Página web (Flask + HTML/CSS + Python)
+> Página web Flask + HTML/CSS + Python
 
 ## Bibliotecas que voy a utilizar:
 - `flask` — servidor web y rutas
-- `jinja2` — plantillas dinámicas (incluida con Flask)
+- `jinja2` — plantillas dinámicas 
 - `requests` — por si consumo alguna API externa de emisiones
 
 ## Referencias útiles:
